@@ -32,13 +32,13 @@ public:
 		if(this->vidas >= 0) this->vidas = vidas; }
 
 	// Getters
-	float getX(float x) { return this->x; }
-	float getY(float y) { return this->y; }
-	float getdx(float dx) { return this->dx; }
-	float getdy(float dy) { return this->dy; }
-	int getancho(int ancho) { return this->ancho; }
-	int getalto(int alto) { return this->alto; }
-	int getVidas(int vidas) { return this->vidas; }
+	float getX() { return this->x; }
+	float getY( ) { return this->y; }
+	float getdx( ) { return this->dx; }
+	float getdy() { return this->dy; }
+	int getancho() { return this->ancho; }
+	int getalto() { return this->alto; }
+	int getVidas() { return this->vidas; }
 
 	// Metodos
 	void perderVidas(){
@@ -67,7 +67,7 @@ public:
 				y += dy;
 			break;
 		case 77:// Right
-			if (x + ancho > Console::WindowWidth)
+			if (x + ancho < Console::WindowWidth)
 				x += dx;
 			break;
 		case 72:// Arriba

@@ -6,43 +6,59 @@
 #include <vector>
 #include <string>
 #include <iostream>
-#include <conio.h>
+#include <conio.h>      // Para _getch(), _kbhit(), _sleep()
+#include <windows.h>    // Para Sleep() (alternativa a _sleep())
+#include <cstdlib>      // Para system() y rand()
+#include <ctime> 
 
 using namespace std;
 using namespace System;
 using namespace System::Drawing;
 class Jugabilidad
 {
+private:
+    Protagonista* prota;
+    vector<Enemigo*> enemigos;
+    bool juegoActivo;
 public:
-	Jugabilidad(){}
-	~Jugabilidad(){}
+    Jugabilidad() {
+        juegoActivo = true;
+    }
+    ~Jugabilidad() {
+        limpiarMemoria();
+    }
+    void agregarObjetos() {}
+    void eliminarObjetos(){}
 
-	void jugar() {
-		// En proceso solo quiero saber si mi gestion de archivos, librerias, logica y de memoria estan bien
-		Console::CursorVisible = false; 
-		vector<Enemigo*> enemigos;
-		// Generando vehiculos
-		for (int i = 0; i < 3; i++) {
-			enemigos.push_back(new Dron(10 + (i * 4), 2 + (i * 10), 3, 2, true));
-		}
-		// Generando drones
+    void borrarObjetos() {}
+    void moverObjetos(){}
+    void dibujarObjetos(){}
 
-		for (int i = 0; i < 3; i++) {
-			enemigos.push_back(new Vehiculo(10 + (i * 4), 2 + (i * 10), 3, 2, true));
-		}
+    void inicializar() {}
+    void procesarInput() {}
 
-		Protagonista* prota = new Protagonista(1.0, 1.0, 3, 3, 3);
-		char tecla = _getch();
-		while (true) {
-			if(kbhit()){
-				prota->mover(tecla);
-			}
-			_sleep(50);
-		}
-		delete prota;
-		for (int i = 0; i < 3; i++) {
-			delete enemigos[i];
-		}
-	}
+    void actualizarEnemigos() {}
+    void verificarColisiones() {}
+    void mostrarInfo() {}
+
+    void limpiarMemoria() {}
+
+    void jugar() {
+        inicializar();
+
+        while (juegoActivo) {
+            procesarInput();
+
+            if (!juegoActivo) break;
+
+            actualizarEnemigos();
+            verificarColisiones();
+            mostrarInfo();
+
+            Sleep(50);
+        }
+        limpiarMemoria();
+    }
+
 };
 
