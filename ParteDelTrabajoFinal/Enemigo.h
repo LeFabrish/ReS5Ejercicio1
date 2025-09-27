@@ -29,16 +29,18 @@ public:
 	void setVisible(bool visible) { this->visible = visible; }
 
 	// Getters
-	float getX(float x) { return this->x; }
-	float getY(float y) { return this->y; }
-	int getancho(int ancho) { return this->ancho; }
-	int getalto(int alto) { return this->alto; }
-	bool getVisible(bool visible) { return this->visible; }
+	float getX() { return this->x; }
+	float getY() { return this->y; }
+	int getancho() { return this->ancho; }
+	int getalto() { return this->alto; }
+	bool getVisible() { return this->visible; }
 
 	// Metodos
-	void borrar() {}
-	void dibujar() {}
-	void mover() {}
+	virtual void borrar() = 0;
+	virtual void dibujar() = 0;
+	virtual void mover() = 0;
 
+	// Rectangukoi 
+	Rectangle getRectangulo() { return Rectangle(x, y, ancho, alto); }
 };
 

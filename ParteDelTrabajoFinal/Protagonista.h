@@ -13,10 +13,10 @@ private:
 	int ancho, alto, vidas;
 public:
 	Protagonista(
-		float x, float y, float dx, float dy,
+		float x, float y,
 	int ancho,int alto, int vidas){
 		this->x = x;	this->y = y;	
-		this->dx = dx;	this->dy = dy;
+		this->dx = 1;	this->dy = 1;
 		this->ancho = ancho;	this->alto = alto;
 		this->vidas = vidas;
 	}
@@ -55,6 +55,7 @@ public:
 		Console::SetCursorPosition(x, int(y)+2); cout << "/ \\";
 	}
 	void mover(char tecla){
+		borrar();
 		switch (tecla)
 		{
 		case 75:// Left
@@ -74,11 +75,12 @@ public:
 				y -= dy;
 			break;
 		}
+		dibujar();
 	}
 
 	// Rectangulo
 	Rectangle obtenerRectangle(){
-		
+		return Rectangle(x, y, ancho, alto);
 	}
 };
 
